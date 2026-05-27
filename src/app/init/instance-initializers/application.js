@@ -12,6 +12,7 @@ export default {
 		const RouterService = application.lookup( "service:router" );
 		const SettingsService = application.lookup( "service:settings" );
 		const HotkeyService = application.lookup( "service:hotkey" );
+		const NwjsService = application.lookup( "service:nwjs" );
 		const rootElement = document.querySelector( application.rootElement );
 
 		addObserver( SettingsService, "gui.smoothscroll", SettingsService, function() {
@@ -21,6 +22,16 @@ export default {
 				disableSmoothScroll();
 			}
 		});
+
+		addObserver( SettingsService, "gui.fullscreen", SettingsService, function() {
+			NwjsService.fullscreen( get( this, "gui.fullscreen" ) );
+		});
+
+		if ( SettingsService && SettingsService.on instanceof Function ) {
+			SettingsService.on( "initialized", () => {
+				NwjsService.fullscreen( get( SettingsService, "gui.fullscreen" ) );
+			});
+		}
 
 		function history( e, go ) {
 			e.preventDefault();

@@ -95,6 +95,10 @@ gui:
             one: Após um minuto
             two: Após dois minutos
             five: Após cinco minutos
+    fullscreen:
+        title: Modo tela cheia
+        description: Exibir a aplicacao em tela cheia.
+        checkbox: Ativar modo tela cheia
 streaming:
     provider:
         title: Provedor de transmissão

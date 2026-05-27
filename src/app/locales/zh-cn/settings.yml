@@ -84,6 +84,10 @@ gui:
             one: 1 分钟后
             two: 2 分钟后
             five: 5 分钟后
+    fullscreen:
+        title: 全屏模式
+        description: 以全屏方式显示应用程序。
+        checkbox: 启用全屏模式
 streaming:
     provider:
         title: 串流工具

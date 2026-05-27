@@ -89,6 +89,10 @@ gui:
             one: Nach einer Minute
             two: Nach zwei Minuten
             five: Nach fünf Minuten
+    fullscreen:
+        title: Vollbildmodus
+        description: Anwendung im Vollbild anzeigen.
+        checkbox: Vollbildmodus aktivieren
 streaming:
     provider:
         title: Streamingprovider

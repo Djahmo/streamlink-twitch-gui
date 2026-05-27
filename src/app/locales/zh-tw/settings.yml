@@ -89,6 +89,10 @@ gui:
             one: 1 分鐘後
             two: 2 分鐘後
             five: 5 分鐘後
+    fullscreen:
+        title: 全螢幕模式
+        description: 以全螢幕方式顯示應用程式
+        checkbox: 啟用全螢幕模式
 streaming:
     provider:
         title: 流媒體提供商

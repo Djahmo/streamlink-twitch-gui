@@ -89,6 +89,10 @@ gui:
             one: After one minute
             two: After two minutes
             five: After five minutes
+    fullscreen:
+        title: Fullscreen mode
+        description: Display the application in fullscreen.
+        checkbox: Enable fullscreen mode
 streaming:
     provider:
         title: Streaming provider

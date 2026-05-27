@@ -24,6 +24,7 @@ export const ATTR_GUI_FOCUSREFRESH_FIVE = 300000;
 export default Fragment.extend({
 	externalcommands: attr( "boolean", { defaultValue: false } ),
 	focusrefresh: attr( "number", { defaultValue: ATTR_GUI_FOCUSREFRESH_NONE } ),
+	fullscreen: attr( "boolean", { defaultValue: false } ),
 	hidebuttons: attr( "boolean", { defaultValue: false } ),
 	homepage: attr( "string", { defaultValue: "/streams" } ),
 	integration: attr( "number", { defaultValue: ATTR_GUI_INTEGRATION_BOTH } ),

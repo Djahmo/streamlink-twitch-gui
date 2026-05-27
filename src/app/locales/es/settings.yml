@@ -86,6 +86,10 @@ gui:
             one: Después de un minuto
             two: Después de dos minutos
             five: Después de cinco minutos
+    fullscreen:
+        title: Modo de pantalla completa
+        description: Mostrar la aplicación en pantalla completa.
+        checkbox: Activar el modo de pantalla completa
 streaming:
     provider:
         title: Proveedor del streaming

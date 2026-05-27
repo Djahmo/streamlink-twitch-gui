@@ -8,6 +8,7 @@ import {
 	toggleVisibility,
 	toggleMaximized,
 	toggleMinimized,
+	setFullscreen,
 	toggleShowInTaskbar,
 	setFocused,
 	setVisibility,
@@ -85,6 +86,10 @@ export default Service.extend( /** @class NwjsService */ {
 
 	maximize() {
 		toggleMaximized();
+	},
+
+	fullscreen( value = true ) {
+		setFullscreen( value );
 	},
 
 	focus( focus = true ) {

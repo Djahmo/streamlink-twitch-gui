@@ -21,12 +21,15 @@ let taskbar   = manifest.window[ "show_in_taskbar" ];
 let focused   = true;
 let maximized = false;
 let minimized = false;
+let fullscreen = false;
 
 
 nwWindow.on( "focus", () => focused = true );
 nwWindow.on( "blur",  () => focused = false );
 nwWindow.on( "maximize", () => maximized = true );
 nwWindow.on( "minimize", () => minimized = true );
+nwWindow.on( "enter-fullscreen", () => fullscreen = true );
+nwWindow.on( "leave-fullscreen", () => fullscreen = false );
 // called when unmaximizing or restoring from minimized state
 nwWindow.on( "restore", () => {
 	if ( minimized ) {
@@ -100,6 +103,25 @@ export function setMinimized( minimize ) {
 
 export function toggleMinimized() {
 	setMinimized( !minimized );
+}
+
+
+export function getFullscreen() {
+	return fullscreen;
+}
+
+export function setFullscreen( value ) {
+	if ( value ) {
+		nwWindow.enterFullscreen();
+	} else {
+		nwWindow.leaveFullscreen();
+	}
+
+	fullscreen = !!value;
+}
+
+export function toggleFullscreen() {
+	setFullscreen( !fullscreen );
 }
 
 

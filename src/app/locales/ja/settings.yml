@@ -84,6 +84,10 @@ gui:
             one: 1分後に更新
             two: 2分後に更新
             five: 5分後に更新
+    fullscreen:
+        title: フルスクリーンモード
+        description: アプリをフルスクリーンで表示します。
+        checkbox: フルスクリーンモードを有効にする
 streaming:
     provider:
         title: ストリーミングツール

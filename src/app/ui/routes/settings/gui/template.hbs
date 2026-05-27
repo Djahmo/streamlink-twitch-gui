@@ -49,6 +49,17 @@
 	{{/radio-buttons}}
 {{/settings-row}}
 
+{{#settings-row
+	(t "settings.gui.fullscreen.title")
+	(t "settings.gui.fullscreen.description")
+	icon="fa-arrows-alt"
+}}
+	{{check-box
+		(t "settings.gui.fullscreen.checkbox")
+		checked=model.gui.fullscreen
+	}}
+{{/settings-row}}
+
 {{#if model.advanced}}
 	{{#settings-row
 		(t "settings.gui.hidebuttons.title")

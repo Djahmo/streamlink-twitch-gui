@@ -86,6 +86,10 @@ gui:
             one: "Через минуту"
             two: "Через 2 минуты"
             five: "Через 5 минут"
+    fullscreen:
+        title: "Полноэкранный режим"
+        description: "Отображать приложение в полноэкранном режиме."
+        checkbox: "Включить полноэкранный режим"
 streaming:
     provider:
         title: "Провайдер стримов (streaming provider)"

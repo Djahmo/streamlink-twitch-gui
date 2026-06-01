@@ -76,3 +76,10 @@ streaming:
         log: "{provider}ログのオン/オフ"
         restart: "再開"
         shutdown: "ライブを閉じる"
+gamepad_keyboard:
+    header: "仮想キーボード"
+    action:
+        clear: "クリア"
+        erase: "バックスペース"
+        space: "スペース"
+        search: "検索"

@@ -76,3 +76,10 @@ streaming:
         log: "{provider} Logansicht ein-/ausschalten"
         restart: Neu starten
         shutdown: Stream schließen
+gamepad_keyboard:
+    header: Virtuelle Tastatur
+    action:
+        clear: Leeren
+        erase: Rücktaste
+        space: Leerzeichen
+        search: Suchen

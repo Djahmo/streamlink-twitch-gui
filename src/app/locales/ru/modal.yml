@@ -76,3 +76,10 @@ streaming:
         log: Показать/скрыть журнал {provider}
         restart: Перезапуск
         shutdown: Выключить
+gamepad_keyboard:
+    header: Виртуальная клавиатура
+    action:
+        clear: Очистить
+        erase: Удалить символ
+        space: Пробел
+        search: Поиск

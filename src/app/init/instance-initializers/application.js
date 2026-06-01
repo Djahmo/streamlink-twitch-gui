@@ -14,7 +14,12 @@ export default {
 		const HotkeyService = application.lookup( "service:hotkey" );
 		const NwjsService = application.lookup( "service:nwjs" );
 		const KeyboardNavigationService = application.lookup( "service:keyboard-navigation" );
+		const GamepadNavigationService = application.lookup( "service:gamepad-navigation" );
 		const rootElement = document.querySelector( application.rootElement );
+
+		if ( GamepadNavigationService && GamepadNavigationService.start instanceof Function ) {
+			GamepadNavigationService.start();
+		}
 
 		addObserver( SettingsService, "gui.smoothscroll", SettingsService, function() {
 			if ( get( this, "gui.smoothscroll" ) ) {

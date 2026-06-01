@@ -76,3 +76,10 @@ streaming:
         log: 顯示/隱藏 {provider} 記錄
         restart: 重新啟動
         shutdown: 中斷實況
+gamepad_keyboard:
+    header: 虛擬鍵盤
+    action:
+        clear: 清除
+        erase: 退格
+        space: 空白
+        search: 搜尋

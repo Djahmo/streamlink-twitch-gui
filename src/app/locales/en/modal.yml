@@ -76,3 +76,10 @@ streaming:
         log: Toggle {provider} log
         restart: Restart
         shutdown: Close stream
+gamepad_keyboard:
+    header: Virtual keyboard
+    action:
+        clear: Clear
+        erase: Backspace
+        space: Space
+        search: Search

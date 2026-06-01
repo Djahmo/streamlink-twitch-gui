@@ -1,0 +1,35 @@
+<div>
+	{{#modal-header}}
+		{{t "modal.gamepad_keyboard.header"}}
+	{{/modal-header}}
+	{{#modal-body}}
+		<div class="vk-display">{{value}}</div>
+		<div class="vk-grid">
+			{{#each keyRows as |row|}}
+				<div class="vk-row">
+					{{#each row as |key|}}
+						<button
+							type="button"
+							class="vk-key"
+							{{action "pressKey" key}}
+						>{{key}}</button>
+					{{/each}}
+				</div>
+			{{/each}}
+		</div>
+	{{/modal-body}}
+	{{#modal-footer classNames="vk-footer"}}
+		<button type="button" class="vk-action vk-clear" {{action "clear"}}>
+			{{t "modal.gamepad_keyboard.action.clear"}}
+		</button>
+		<button type="button" class="vk-action" {{action "erase"}}>
+			{{t "modal.gamepad_keyboard.action.erase"}}
+		</button>
+		<button type="button" class="vk-action vk-space" {{action "space"}}>
+			{{t "modal.gamepad_keyboard.action.space"}}
+		</button>
+		<button type="button" class="vk-action vk-search" {{action "search"}}>
+			{{t "modal.gamepad_keyboard.action.search"}}
+		</button>
+	{{/modal-footer}}
+</div>

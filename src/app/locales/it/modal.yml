@@ -76,3 +76,10 @@ streaming:
         log: attiva/disattiva registro {provider}
         restart: Riavvia
         shutdown: Chiudi stream
+gamepad_keyboard:
+    header: Tastiera virtuale
+    action:
+        clear: Cancella
+        erase: Backspace
+        space: Spazio
+        search: Cerca

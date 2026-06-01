@@ -21,6 +21,7 @@ export default Component.extend( HotkeyMixin, /** @class SearchBarComponent */  
 	router: service(),
 	/** @type {DS.Store} */
 	store: service(),
+	modal: service(),
 	keyboardNavigation: service( "keyboard-navigation" ),
 
 	layout,
@@ -83,10 +84,16 @@ export default Component.extend( HotkeyMixin, /** @class SearchBarComponent */  
 				return undefined;
 			},
 			onConfirm: event => {
+				if ( event.inputSource === "gamepad" ) {
+					this.send( "openGamepadKeyboard" );
+					return true;
+				}
+
 				this.send( "focus" );
 				return true;
 			},
 			onStart: () => {
+				this.send( "openGamepadKeyboard" );
 				return true;
 			}
 		});
@@ -217,18 +224,21 @@ export default Component.extend( HotkeyMixin, /** @class SearchBarComponent */  
 		},
 
 		submit() {
-			let query = this.query.trim();
-			let filter = this.filter;
+			this._submitQuery( this.query, this.filter );
+		},
 
-			const stream = getStreamFromUrl( query );
-			if ( stream ) {
-				query  = stream;
-				filter = "channels";
-			}
+		openGamepadKeyboard() {
+			const currentFilter = this.filter;
+			const currentQuery = this.query;
 
-			if ( this.reQuery.test( query ) ) {
-				this.doSearch( query, filter );
-			}
+			this.modal.openModal( "gamepad-keyboard", {
+				value: currentQuery,
+				filter: currentFilter,
+				onSubmit: value => {
+					set( this, "query", value );
+					this._submitQuery( value, currentFilter );
+				}
+			});
 		},
 
 		searchHistory({ query, filter }) {

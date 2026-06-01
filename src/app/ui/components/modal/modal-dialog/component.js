@@ -6,7 +6,7 @@ import "./styles.less";
 
 
 export default Component.extend( HotkeyMixin, {
-  modal: service(),
+	modal: service(),
 	keyboardNavigation: service( "keyboard-navigation" ),
 
 	layout,

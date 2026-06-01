@@ -20,6 +20,14 @@ const defaultNamespaceServices = {
 		trigger() {},
 		markInputSource() {}
 	}),
+	ModalService: Service.extend({
+		hasModal() { return false; },
+		openModal() {},
+		closeModal() {}
+	}),
+	GamepadNavigationService: Service.extend({
+		start() {}
+	}),
 };
 
 

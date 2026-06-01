@@ -76,3 +76,10 @@ streaming:
         log: 显示/隐藏{provider}日志
         restart: 重启
         shutdown: 中断直播
+gamepad_keyboard:
+    header: 虚拟键盘
+    action:
+        clear: 清空
+        erase: 退格
+        space: 空格
+        search: 搜索

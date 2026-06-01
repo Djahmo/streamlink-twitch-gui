@@ -76,3 +76,10 @@ streaming:
         log: Mostra/Ocultar log do {provider}
         restart: Reiniciar
         shutdown: Fechar stream
+gamepad_keyboard:
+    header: Teclado virtual
+    action:
+        clear: Limpar
+        erase: Apagar
+        space: Espaço
+        search: Buscar

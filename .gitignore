@@ -26,3 +26,4 @@ nbproject
 /build/tmp/
 /build/travis/data/
 /dist/
+.vscode/settings.json

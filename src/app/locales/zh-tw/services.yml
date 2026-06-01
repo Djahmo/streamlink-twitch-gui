@@ -11,3 +11,38 @@ notification:
         pause:
             label: 暫停通知
             tooltip: 快速停/啟用桌面通知
+
+accessibility:
+    overlay:
+        labels:
+            open-homepage: 開啟首頁
+            open-settings: 開啟設定
+            reload-application: 重新載入應用程式
+            open-developer-tools: 開啟開發者工具
+            minimize-window: 最小化視窗
+            maximize-window: 最大化視窗
+            close-window: 關閉視窗
+            open-watching: 開啟觀看頁面
+            go-back: 返回
+            go-forward: 前進
+            refresh: 重新整理
+            clear-search: 清除搜尋
+            search: 搜尋
+            toggle-search-options: 顯示或隱藏搜尋選項
+            clear-search-history: 清除搜尋歷史
+            toggle-stream-details: 顯示或隱藏實況詳情
+            browse-file: 瀏覽檔案
+            close: 關閉
+            open-user: 開啟使用者個人檔案
+            delete: 刪除
+            edit: 編輯
+            play: 播放
+            download: 下載
+            confirm: 確認
+            main-menu: 主選單
+            primary-actions: 主要操作
+            debug-actions: 偵錯操作
+            window-controls: 視窗控制
+            search-navigation: 搜尋導覽
+            sub-menu: 子選單
+            navigation-item: 導覽項目

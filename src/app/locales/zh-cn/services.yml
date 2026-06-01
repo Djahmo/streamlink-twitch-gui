@@ -11,3 +11,38 @@ notification:
         pause:
             label: 暂停通知
             tooltip: 开启/关闭桌面通知
+
+accessibility:
+    overlay:
+        labels:
+            open-homepage: 打开首页
+            open-settings: 打开设置
+            reload-application: 重新加载应用
+            open-developer-tools: 打开开发者工具
+            minimize-window: 最小化窗口
+            maximize-window: 最大化窗口
+            close-window: 关闭窗口
+            open-watching: 打开观看页面
+            go-back: 返回
+            go-forward: 前进
+            refresh: 刷新
+            clear-search: 清除搜索
+            search: 搜索
+            toggle-search-options: 显示或隐藏搜索选项
+            clear-search-history: 清除搜索历史
+            toggle-stream-details: 显示或隐藏直播详情
+            browse-file: 浏览文件
+            close: 关闭
+            open-user: 打开用户资料
+            delete: 删除
+            edit: 编辑
+            play: 播放
+            download: 下载
+            confirm: 确认
+            main-menu: 主菜单
+            primary-actions: 主要操作
+            debug-actions: 调试操作
+            window-controls: 窗口控制
+            search-navigation: 搜索导航
+            sub-menu: 子菜单
+            navigation-item: 导航项

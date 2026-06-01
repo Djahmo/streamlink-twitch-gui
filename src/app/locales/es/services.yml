@@ -11,3 +11,38 @@ notification:
         pause:
             label: Pausar notificaciones
             tooltip: Alternar rápidamente las notificaciones de escritorio
+
+accessibility:
+    overlay:
+        labels:
+            open-homepage: Abrir inicio
+            open-settings: Abrir configuración
+            reload-application: Recargar aplicación
+            open-developer-tools: Abrir herramientas de desarrollo
+            minimize-window: Minimizar ventana
+            maximize-window: Maximizar ventana
+            close-window: Cerrar ventana
+            open-watching: Abrir sección de reproducción
+            go-back: Volver
+            go-forward: Avanzar
+            refresh: Actualizar
+            clear-search: Limpiar búsqueda
+            search: Buscar
+            toggle-search-options: Mostrar u ocultar opciones de búsqueda
+            clear-search-history: Borrar historial de búsqueda
+            toggle-stream-details: Mostrar u ocultar detalles del stream
+            browse-file: Examinar archivo
+            close: Cerrar
+            open-user: Abrir perfil de usuario
+            delete: Eliminar
+            edit: Editar
+            play: Reproducir
+            download: Descargar
+            confirm: Confirmar
+            main-menu: Menú principal
+            primary-actions: Acciones principales
+            debug-actions: Acciones de depuración
+            window-controls: Controles de ventana
+            search-navigation: Navegación de búsqueda
+            sub-menu: Submenú
+            navigation-item: Elemento de navegación

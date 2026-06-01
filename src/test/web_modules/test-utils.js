@@ -28,6 +28,9 @@ const defaultNamespaceServices = {
 	GamepadNavigationService: Service.extend({
 		start() {}
 	}),
+	AccessibilityOverlayService: Service.extend({
+		start() {}
+	})
 };
 
 

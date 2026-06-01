@@ -15,10 +15,18 @@ export default {
 		const NwjsService = application.lookup( "service:nwjs" );
 		const KeyboardNavigationService = application.lookup( "service:keyboard-navigation" );
 		const GamepadNavigationService = application.lookup( "service:gamepad-navigation" );
+		const AccessibilityOverlayService = application.lookup( "service:accessibility-overlay" );
 		const rootElement = document.querySelector( application.rootElement );
 
 		if ( GamepadNavigationService && GamepadNavigationService.start instanceof Function ) {
 			GamepadNavigationService.start();
+		}
+
+		if (
+			AccessibilityOverlayService
+			&& AccessibilityOverlayService.start instanceof Function
+		) {
+			AccessibilityOverlayService.start();
 		}
 
 		addObserver( SettingsService, "gui.smoothscroll", SettingsService, function() {

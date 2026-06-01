@@ -11,3 +11,38 @@ notification:
         pause:
             label: 通知の一時停止
             tooltip: デスクトップ通知のオン/オフ
+
+accessibility:
+    overlay:
+        labels:
+            open-homepage: ホームを開く
+            open-settings: 設定を開く
+            reload-application: アプリケーションを再読み込み
+            open-developer-tools: 開発者ツールを開く
+            minimize-window: ウィンドウを最小化
+            maximize-window: ウィンドウを最大化
+            close-window: ウィンドウを閉じる
+            open-watching: 視聴セクションを開く
+            go-back: 戻る
+            go-forward: 進む
+            refresh: 更新
+            clear-search: 検索をクリア
+            search: 検索
+            toggle-search-options: 検索オプションを表示/非表示
+            clear-search-history: 検索履歴を削除
+            toggle-stream-details: 配信の詳細を表示/非表示
+            browse-file: ファイルを参照
+            close: 閉じる
+            open-user: ユーザープロフィールを開く
+            delete: 削除
+            edit: 編集
+            play: 再生
+            download: ダウンロード
+            confirm: 確認
+            main-menu: メインメニュー
+            primary-actions: 主要アクション
+            debug-actions: デバッグアクション
+            window-controls: ウィンドウ操作
+            search-navigation: 検索ナビゲーション
+            sub-menu: サブメニュー
+            navigation-item: ナビゲーション項目

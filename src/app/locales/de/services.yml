@@ -11,3 +11,38 @@ notification:
         pause:
             label: Benachrichtigungen pausieren
             tooltip: "Desktop-Benachrichtigungen temporär ein-/ausschalten"
+
+accessibility:
+    overlay:
+        labels:
+            open-homepage: Startseite öffnen
+            open-settings: Einstellungen öffnen
+            reload-application: Anwendung neu laden
+            open-developer-tools: Entwicklerwerkzeuge öffnen
+            minimize-window: Fenster minimieren
+            maximize-window: Fenster maximieren
+            close-window: Fenster schließen
+            open-watching: Bereich Wiedergabe öffnen
+            go-back: Zurück
+            go-forward: Vorwärts
+            refresh: Aktualisieren
+            clear-search: Suche löschen
+            search: Suchen
+            toggle-search-options: Suchoptionen ein-/ausblenden
+            clear-search-history: Suchverlauf löschen
+            toggle-stream-details: Stream-Details ein-/ausblenden
+            browse-file: Datei auswählen
+            close: Schließen
+            open-user: Benutzerprofil öffnen
+            delete: Löschen
+            edit: Bearbeiten
+            play: Abspielen
+            download: Herunterladen
+            confirm: Bestätigen
+            main-menu: Hauptmenü
+            primary-actions: Primäre Aktionen
+            debug-actions: Debug-Aktionen
+            window-controls: Fenstersteuerung
+            search-navigation: Suchnavigation
+            sub-menu: Untermenü
+            navigation-item: Navigationselement

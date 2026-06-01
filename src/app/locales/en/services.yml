@@ -11,3 +11,38 @@ notification:
         pause:
             label: Pause notifications
             tooltip: Quickly toggle desktop notifications
+
+accessibility:
+    overlay:
+        labels:
+            open-homepage: Open homepage
+            open-settings: Open settings
+            reload-application: Reload application
+            open-developer-tools: Open developer tools
+            minimize-window: Minimize window
+            maximize-window: Maximize window
+            close-window: Close window
+            open-watching: Open watching
+            go-back: Go back
+            go-forward: Go forward
+            refresh: Refresh
+            clear-search: Clear search
+            search: Search
+            toggle-search-options: Toggle search options
+            clear-search-history: Clear search history
+            toggle-stream-details: Toggle stream details
+            browse-file: Browse file
+            close: Close
+            open-user: Open user
+            delete: Delete
+            edit: Edit
+            play: Play
+            download: Download
+            confirm: Confirm
+            main-menu: Main menu
+            primary-actions: Primary actions
+            debug-actions: Debug actions
+            window-controls: Window controls
+            search-navigation: Search navigation
+            sub-menu: Sub menu
+            navigation-item: Navigation item

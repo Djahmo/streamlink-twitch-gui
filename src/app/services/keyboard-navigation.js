@@ -108,46 +108,51 @@ export default Service.extend({
 	focusFirstContentZone( excludeZoneId = null ) {
 		const isEligible = zone => zone.id !== "main-menu" && zone.id !== excludeZoneId;
 
-		for ( const zone of this.zones ) {
-			if ( !isEligible( zone ) || !zone.id.startsWith( "content-list-" ) ) {
-				continue;
+		const pickTopZone = matcher => {
+			let picked = null;
+
+			for ( const zone of this.zones ) {
+				if ( !isEligible( zone ) || !matcher( zone ) ) {
+					continue;
+				}
+
+				const root = this._resolveRoot( zone );
+
+				if ( !root || !root.isConnected ) {
+					continue;
+				}
+
+				const elements = this._getElements( zone, root );
+
+				if ( !elements.length ) {
+					continue;
+				}
+
+				const top = root.getBoundingClientRect().top;
+
+				if ( !picked || top < picked.top ) {
+					picked = {
+						zone,
+						elements,
+						top
+					};
+				}
 			}
 
-			const root = this._resolveRoot( zone );
-
-			if ( !root || !root.isConnected ) {
-				continue;
+			if ( !picked ) {
+				return false;
 			}
 
-			const elements = this._getElements( zone, root );
+			const state = this._getZoneState( picked.zone );
+			return this._focusElement( picked.zone, state, picked.elements, 0 );
+		};
 
-			if ( !elements.length ) {
-				continue;
-			}
-
-			const state = this._getZoneState( zone );
-			return this._focusElement( zone, state, elements, 0 );
+		if ( pickTopZone( zone => zone.id.startsWith( "content-list-" ) ) ) {
+			return true;
 		}
 
-		for ( const zone of this.zones ) {
-			if ( !isEligible( zone ) ) {
-				continue;
-			}
-
-			const root = this._resolveRoot( zone );
-
-			if ( !root || !root.isConnected ) {
-				continue;
-			}
-
-			const elements = this._getElements( zone, root );
-
-			if ( !elements.length ) {
-				continue;
-			}
-
-			const state = this._getZoneState( zone );
-			return this._focusElement( zone, state, elements, 0 );
+		if ( pickTopZone( () => true ) ) {
+			return true;
 		}
 
 		return false;

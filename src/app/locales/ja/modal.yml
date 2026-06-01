@@ -43,6 +43,12 @@ quit:
         close: "戻る"
         shutdown: "シャットダウン"
         quit: "終了"
+exit:
+    header: "アプリケーションを終了しますか？"
+    body: "本当にアプリケーションを終了しますか？"
+    action:
+        cancel: "いいえ"
+        confirm: "はい"
 streaming:
     header:
         preparing: "準備中です、しばらくお待ち下さい"

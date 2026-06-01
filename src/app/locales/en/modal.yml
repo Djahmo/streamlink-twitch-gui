@@ -43,6 +43,12 @@ quit:
         close: Return
         shutdown: Shutdown
         quit: Quit
+exit:
+    header: Close the application?
+    body: Do you really want to quit the application?
+    action:
+        cancel: No
+        confirm: Yes
 streaming:
     header:
         preparing: "Preparing, please wait"

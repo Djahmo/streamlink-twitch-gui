@@ -43,6 +43,12 @@ quit:
         close: 返回
         shutdown: 關閉
         quit: 離開
+exit:
+    header: 關閉應用程式？
+    body: 你確定要離開應用程式嗎？
+    action:
+        cancel: 否
+        confirm: 是
 streaming:
     header:
         preparing: "準備中，請稍候"

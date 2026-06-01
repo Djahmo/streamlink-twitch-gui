@@ -43,6 +43,12 @@ quit:
         close: Назад
         shutdown: Выключение
         quit: Выход
+exit:
+    header: Закрыть приложение?
+    body: Вы действительно хотите выйти из приложения?
+    action:
+        cancel: Нет
+        confirm: Да
 streaming:
     header:
         preparing: "Идет подготовка, пожалуйста, ожидайте"

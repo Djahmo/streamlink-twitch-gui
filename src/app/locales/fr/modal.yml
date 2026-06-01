@@ -43,6 +43,12 @@ quit:
         close: Retour
         shutdown: Arrêter
         quit: Quitter
+exit:
+    header: Fermer l'application ?
+    body: Voulez-vous vraiment quitter l'application ?
+    action:
+        cancel: Non
+        confirm: Oui
 streaming:
     header:
         preparing: "Préparation, veuillez patienter"

@@ -1,0 +1,24 @@
+<div>
+	{{#modal-header}}
+		{{t "modal.exit.header"}}
+	{{/modal-header}}
+	{{#modal-body}}
+		{{t "modal.exit.body"}}
+	{{/modal-body}}
+	{{#modal-footer classNames="button-list-horizontal"}}
+		{{#form-button
+			action=(action "cancel")
+			classNames="btn-exit-cancel"
+			icon="fa-times"
+		}}
+			{{t "modal.exit.action.cancel"}}
+		{{/form-button}}
+		{{#form-button
+			action=(action "confirm")
+			classNames="btn-success"
+			icon="fa-check"
+		}}
+			{{t "modal.exit.action.confirm"}}
+		{{/form-button}}
+	{{/modal-footer}}
+</div>

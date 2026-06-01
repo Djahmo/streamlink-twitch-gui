@@ -20,6 +20,7 @@ const hotkeyActionRouteMap = {
 export default Component.extend( HotkeyMixin, /** @class MainMenuComponent */ {
 	/** @type {RouterService} */
 	router: service(),
+	modal: service(),
 	keyboardNavigation: service( "keyboard-navigation" ),
 
 	layout,
@@ -67,6 +68,10 @@ export default Component.extend( HotkeyMixin, /** @class MainMenuComponent */ {
 
 				if ( event.repeat ) {
 					return true;
+				}
+
+				if ( !this.modal.hasModal( "exit" ) ) {
+					this.modal.openModal( "exit" );
 				}
 
 				return true;

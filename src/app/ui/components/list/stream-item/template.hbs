@@ -10,6 +10,8 @@
 	clickable=(bool-not expanded)
 	tagName="section"
 	class=(if expanded "expanded")
+	data-nav-ring="true"
+	data-nav-action="true"
 	title=(unless expanded
 		(unless infoTitle content.title content.game_name)
 		""

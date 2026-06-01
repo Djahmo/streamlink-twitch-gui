@@ -13,6 +13,7 @@ export default {
 		const SettingsService = application.lookup( "service:settings" );
 		const HotkeyService = application.lookup( "service:hotkey" );
 		const NwjsService = application.lookup( "service:nwjs" );
+		const KeyboardNavigationService = application.lookup( "service:keyboard-navigation" );
 		const rootElement = document.querySelector( application.rootElement );
 
 		addObserver( SettingsService, "gui.smoothscroll", SettingsService, function() {
@@ -51,6 +52,15 @@ export default {
 		rootElement.addEventListener( "keyup", e => {
 			if ( !reHotkeyIgnoreTags.test( e.target.nodeName ) ) {
 				HotkeyService.trigger( e );
+			}
+		});
+
+		rootElement.addEventListener( "keydown", e => {
+			if (
+				KeyboardNavigationService
+				&& KeyboardNavigationService.trigger instanceof Function
+			) {
+				KeyboardNavigationService.trigger( e );
 			}
 		});
 

@@ -1,11 +1,26 @@
 import Application from "@ember/application";
 import GlobalsResolver from "@ember/application/globals-resolver";
+import Service from "@ember/service";
 import { getApplication, setApplication, getResolver, setResolver } from "@ember/test-helpers";
 import TemplateCompiler from "ember-source/dist/ember-template-compiler";
 
 
 const { compile } = TemplateCompiler;
 const reWhiteSpace = /\s+/g;
+
+const defaultNamespaceServices = {
+	KeyboardNavigationService: Service.extend({
+		registerZone() {},
+		unregisterZone() {},
+		focusZone() { return false; },
+		isZoneFocused() { return false; },
+		focusAdjacentContentZone() { return false; },
+		focusFirstContentZone() { return false; },
+		clearFocus() {},
+		trigger() {},
+		markInputSource() {}
+	}),
+};
 
 
 export function getElem( component, selector ) {
@@ -39,6 +54,8 @@ export function hbs( strings, ...vars ) {
 }
 
 export function buildResolver( namespace = {} ) {
+	namespace = Object.assign( {}, defaultNamespaceServices, namespace );
+
 	return GlobalsResolver.create({
 		namespace
 	});

@@ -1,7 +1,7 @@
 {{#unless content.isFulfilled}}
 	{{loading-spinner}}
 {{else}}
-	{{#link-to "channel" content.id tagName="div" class="logo"}}
+	{{#link-to "channel" content.id tagName="div" class="logo" data-nav-ring="true" data-nav-action="true"}}
 		{{preview-image
 			src=content.profile_image_url
 			title=content.display_name

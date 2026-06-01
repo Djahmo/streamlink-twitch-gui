@@ -3,11 +3,14 @@ import Component from "@ember/component";
 import { get, setProperties } from "@ember/object";
 import { readOnly } from "@ember/object/computed";
 import { addObserver } from "@ember/object/observers";
+import { inject as service } from "@ember/service";
 import layout from "./template.hbs";
 import "./styles.less";
 
 
 export default Component.extend({
+	keyboardNavigation: service( "keyboard-navigation" ),
+
 	layout,
 
 	tagName: "div",
@@ -38,11 +41,129 @@ export default Component.extend({
 			lengthInitial: get( this, "content.length" ),
 			length: 0,
 			duplicates: A(),
-			duplicatesMap: new Map()
+			duplicatesMap: new Map(),
+			initialFocusTimeoutId: null
 		});
 
 		addObserver( this, "content.length", this, this.checkDuplicates );
 		this.checkDuplicates();
+	},
+
+	didInsertElement() {
+		this._super( ...arguments );
+
+		const zoneId = `content-list-${this.elementId}`;
+		setProperties( this, { zoneId } );
+
+		this.keyboardNavigation.registerZone({
+			id: zoneId,
+			element: () => this.element,
+			mode: "grid",
+			selector: "ul > li",
+			getRingTarget: element => {
+				if ( !element ) {
+					return null;
+				}
+
+				const ringSelector = element.getAttribute( "data-nav-ring-selector" );
+				if ( ringSelector ) {
+					if ( ringSelector === ":self" ) {
+						return element;
+					}
+
+					return element.querySelector( ringSelector );
+				}
+
+				return element.querySelector( "[data-nav-ring]" )
+					|| element.querySelector( "a,button,[role='button']" );
+			},
+			onBoundary: ( event, root, elements, activeIndex ) => {
+				if ( event.key === "ArrowUp" ) {
+					return this.keyboardNavigation.focusAdjacentContentZone( zoneId, "up" )
+						|| this.keyboardNavigation.focusZone( "search-bar-zone", "first" );
+				}
+
+				if ( event.key === "ArrowDown" ) {
+					return this.keyboardNavigation.focusAdjacentContentZone( zoneId, "down" );
+				}
+
+				if ( event.key !== "ArrowLeft" || activeIndex !== 0 ) {
+					return false;
+				}
+
+				return this.keyboardNavigation.focusZone( "main-menu", "first" );
+			},
+			onConfirm: ( event, root, elements, activeIndex ) => {
+				const index = activeIndex !== -1 ? activeIndex : 0;
+				const item = elements[ index ];
+
+				if ( !item ) {
+					return false;
+				}
+
+				const actionSelector = item.getAttribute( "data-nav-action-selector" );
+				const actionTarget = actionSelector
+					? ( actionSelector === ":self"
+						? item
+						: item.querySelector( actionSelector ) )
+					: item.querySelector( "[data-nav-action]" );
+
+				if ( actionTarget && actionTarget.click instanceof Function ) {
+					actionTarget.click();
+					return true;
+				}
+
+				if ( item.click instanceof Function ) {
+					item.click();
+				}
+
+				return true;
+			}
+		});
+
+		this._scheduleFirstItemFocus();
+	},
+
+	willDestroyElement() {
+		if ( this.initialFocusTimeoutId ) {
+			window.clearTimeout( this.initialFocusTimeoutId );
+			this.set( "initialFocusTimeoutId", null );
+		}
+
+		this.keyboardNavigation.unregisterZone( this.zoneId );
+		this._super( ...arguments );
+	},
+
+	_scheduleFirstItemFocus() {
+		if ( !this.keyboardNavigation.isZoneFocused( "main-menu" ) ) {
+			return;
+		}
+
+		if ( this.initialFocusTimeoutId ) {
+			window.clearTimeout( this.initialFocusTimeoutId );
+		}
+
+		this.set( "initialFocusTimeoutId", window.setTimeout( () => {
+			this.set( "initialFocusTimeoutId", null );
+
+			if ( this.isDestroying || this.isDestroyed ) {
+				return;
+			}
+
+			if ( !this.element || !this.element.isConnected ) {
+				return;
+			}
+
+			if ( !this.keyboardNavigation.isZoneFocused( "main-menu" ) ) {
+				return;
+			}
+
+			if ( !this.element.querySelector( "ul > li" ) ) {
+				return;
+			}
+
+			this.keyboardNavigation.focusZone( this.zoneId, "first" );
+		}, 800 ) );
 	},
 
 
@@ -86,6 +207,7 @@ export default Component.extend({
 
 		// tell ember to update the yielded duplicates in the template's each loop
 		this.notifyPropertyChange( "duplicates" );
+		this._scheduleFirstItemFocus();
 	},
 
 

@@ -21,6 +21,7 @@ export default Component.extend( HotkeyMixin, /** @class SearchBarComponent */  
 	router: service(),
 	/** @type {DS.Store} */
 	store: service(),
+	keyboardNavigation: service( "keyboard-navigation" ),
 
 	layout,
 	tagName: "nav",
@@ -45,6 +46,7 @@ export default Component.extend( HotkeyMixin, /** @class SearchBarComponent */  
 	hotkeys: {
 		focus: "focus"
 	},
+	searchZoneId: "search-bar-zone",
 
 
 	init() {
@@ -54,6 +56,45 @@ export default Component.extend( HotkeyMixin, /** @class SearchBarComponent */  
 			.then( records => {
 				set( this, "model", records );
 			});
+	},
+
+	didInsertElement() {
+		this._super( ...arguments );
+
+		this.keyboardNavigation.registerZone({
+			id: this.searchZoneId,
+			element: () => this.element,
+			allowEditableDirectionNavigation: true,
+			selector: "input[type='search']",
+			getRingTarget: () => this.element.querySelector( "input[type='search']" ),
+			onDirection: event => {
+				if ( event.key === "ArrowDown" ) {
+					return this.keyboardNavigation.focusFirstContentZone( this.searchZoneId );
+				}
+
+				if ( event.key === "ArrowLeft" ) {
+					return this.keyboardNavigation.focusZone( "main-menu", "first" );
+				}
+
+				if ( event.key === "ArrowUp" ) {
+					return true;
+				}
+
+				return undefined;
+			},
+			onConfirm: event => {
+				this.send( "focus" );
+				return true;
+			},
+			onStart: () => {
+				return true;
+			}
+		});
+	},
+
+	willDestroyElement() {
+		this.keyboardNavigation.unregisterZone( this.searchZoneId );
+		this._super( ...arguments );
 	},
 
 
@@ -105,6 +146,25 @@ export default Component.extend( HotkeyMixin, /** @class SearchBarComponent */  
 		this.addRecord( query, filter );
 
 		this.router.transitionTo( "search", { queryParams: { filter, query } } );
+	},
+
+	_submitQuery( query, filter ) {
+		let nextQuery = query.trim();
+		let nextFilter = filter;
+
+		const stream = getStreamFromUrl( nextQuery );
+		if ( stream ) {
+			nextQuery = stream;
+			nextFilter = "channels";
+		}
+
+		if ( this.reQuery.test( nextQuery ) ) {
+			this.doSearch( nextQuery, nextFilter );
+			return;
+		}
+
+		set( this, "showDropdown", false );
+		this.router.transitionTo( "streams" );
 	},
 
 

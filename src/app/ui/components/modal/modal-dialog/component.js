@@ -6,7 +6,8 @@ import "./styles.less";
 
 
 export default Component.extend( HotkeyMixin, {
-	modal: service(),
+  modal: service(),
+	keyboardNavigation: service( "keyboard-navigation" ),
 
 	layout,
 
@@ -24,6 +25,7 @@ export default Component.extend( HotkeyMixin, {
 	modalName: "",
 	/** @type {Object} Set by the modal-service-component on component init */
 	modalContext: null,
+	zoneId: null,
 
 	/*
 	 * Since Ember will try to re-use the same DOM element when only the modalContext changes and
@@ -32,6 +34,18 @@ export default Component.extend( HotkeyMixin, {
 	 */
 	didInsertElement() {
 		this._super( ...arguments );
+
+		this.zoneId = `modal-zone-${this.elementId}`;
+		this.keyboardNavigation.registerZone({
+			id: this.zoneId,
+			element: () => this.element,
+			selector: "button,a,[tabindex],input,select,textarea",
+			onBack: () => {
+				this.send( "close" );
+				return true;
+			}
+		});
+
 		this.addObserver( "modalContext", this, () => {
 			const { element } = this;
 			element.parentNode.replaceChild( element, element );
@@ -42,6 +56,11 @@ export default Component.extend( HotkeyMixin, {
 	 * This will be called synchronously, so we need to copy the element and animate it instead
 	 */
 	willDestroyElement() {
+		if ( this.zoneId ) {
+			this.keyboardNavigation.unregisterZone( this.zoneId );
+			this.zoneId = null;
+		}
+
 		const { element } = this;
 		let clone = element.cloneNode( true );
 		clone.classList.add( "fadeOut" );

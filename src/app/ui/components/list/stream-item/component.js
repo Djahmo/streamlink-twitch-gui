@@ -14,6 +14,10 @@ import "./styles.less";
 
 export default ListItemComponent.extend({
 	layout,
+	attributeBindings: [
+		"dataNavRingSelector:data-nav-ring-selector",
+		"dataNavActionSelector:data-nav-action-selector"
+	],
 
 	classNameBindings: [
 		":stream-item-component",
@@ -34,6 +38,8 @@ export default ListItemComponent.extend({
 	expanded: false,
 	locked  : false,
 	timer   : null,
+	dataNavRingSelector: ":self",
+	dataNavActionSelector: ".preview",
 
 	showGame: notEmpty( "content.game_id" ),
 

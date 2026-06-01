@@ -20,6 +20,7 @@ const hotkeyActionRouteMap = {
 export default Component.extend( HotkeyMixin, /** @class MainMenuComponent */ {
 	/** @type {RouterService} */
 	router: service(),
+	keyboardNavigation: service( "keyboard-navigation" ),
 
 	layout,
 
@@ -51,5 +52,37 @@ export default Component.extend( HotkeyMixin, /** @class MainMenuComponent */ {
 					this.router.transitionTo( route );
 				}
 			}), {} )
+	},
+
+	didInsertElement() {
+		this._super( ...arguments );
+		this.keyboardNavigation.registerZone({
+			id: "main-menu",
+			element: () => this.element && this.element.querySelector( "nav" ),
+			selector: "a",
+			onBack: event => {
+				if ( event.key !== "Escape" ) {
+					return false;
+				}
+
+				if ( event.repeat ) {
+					return true;
+				}
+
+				return true;
+			},
+			onDirection: event => {
+				if ( event.key !== "ArrowRight" ) {
+					return undefined;
+				}
+
+				return this.keyboardNavigation.focusFirstContentZone();
+			}
+		});
+	},
+
+	willDestroyElement() {
+		this.keyboardNavigation.unregisterZone( "main-menu" );
+		this._super( ...arguments );
 	}
 });

@@ -3,7 +3,7 @@ import { getOwner } from "@ember/application";
 import { set, setProperties } from "@ember/object";
 import { notEmpty } from "@ember/object/computed";
 import Evented from "@ember/object/evented";
-import Service from "@ember/service";
+import Service, { inject as service } from "@ember/service";
 
 
 /**
@@ -16,6 +16,8 @@ import Service from "@ember/service";
 
 /** */
 export default Service.extend( Evented, /** @class ModalService */ {
+	keyboardNavigation: service( "keyboard-navigation" ),
+
 	/** @type {ModalServiceEntry[]} */
 	modals: null,
 
@@ -59,6 +61,7 @@ export default Service.extend( Evented, /** @class ModalService */ {
 
 		// create new modal dialog
 		if ( idx === -1 ) {
+			this.keyboardNavigation.clearFocus();
 			modals.insertAt( pos, { name, context, priority } );
 			this.trigger( "open", name, context, priority );
 

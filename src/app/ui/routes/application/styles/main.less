@@ -130,6 +130,26 @@ a {
 }
 
 
+.keyboard-nav-focused {
+	outline: 0 !important;
+	box-shadow: none !important;
+}
+
+.keyboard-nav-overlay-ring {
+	position: fixed;
+	pointer-events: none;
+	box-sizing: border-box;
+	z-index: 10002;
+	border: 2px solid;
+	border-radius: 2px;
+	display: none;
+
+	.theme({
+		border-color: @theme-input-border-color-active;
+	});
+}
+
+
 ul.list {
 	margin: 0;
 	padding: 0;
